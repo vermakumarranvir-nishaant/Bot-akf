@@ -17,15 +17,13 @@ function createBot() {
       port: config.server.port,
    });
 
-   bot.loadPlugin(pathfinder);
+   bot.once('spawn', () => {
+      logger.info("Bot joined to the server");
+bot.loadPlugin(pathfinder);
    const mcData = require('minecraft-data')(bot.version);
    const defaultMove = new Movements(bot, mcData);
    bot.settings.colorsEnabled = false;
    bot.pathfinder.setMovements(defaultMove);
-
-   bot.once('spawn', () => {
-      logger.info("Bot joined to the server");
-
       if (config.utils['auto-auth'].enabled) {
          logger.info('Started auto-auth module');
 
