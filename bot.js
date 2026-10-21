@@ -15,7 +15,6 @@ function createBot() {
       auth: config['bot-account']['type'],
       host: config.server.ip,
       port: config.server.port,
-      version: config.server.version,
    });
 
    bot.loadPlugin(pathfinder);
